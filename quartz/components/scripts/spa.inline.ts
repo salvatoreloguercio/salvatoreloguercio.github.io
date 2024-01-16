@@ -1,8 +1,10 @@
 import micromorph from "micromorph"
-import { FullSlug, RelativeURL, getFullSlug, normalizeRelativeURLs } from "../../util/path"
+import { FullSlug, RelativeURL, getFullSlug } from "../../util/path"
+import { normalizeRelativeURLs } from "./popover.inline"
 
 // adapted from `micromorph`
 // https://github.com/natemoo-re/micromorph
+
 const NODE_TYPE_ELEMENT = 1
 let announcer = document.createElement("route-announcer")
 const isElement = (target: EventTarget | null): target is Element =>

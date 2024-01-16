@@ -27,12 +27,8 @@ function TagContent(props: QuartzComponentProps) {
       ? fileData.description
       : htmlToJsx(fileData.filePath!, tree)
 
-  if (tag === "/") {
-    const tags = [
-      ...new Set(
-        allFiles.flatMap((data) => data.frontmatter?.tags ?? []).flatMap(getAllSegmentPrefixes),
-      ),
-    ].sort((a, b) => a.localeCompare(b))
+  if (tag === "") {
+    const tags = [...new Set(allFiles.flatMap((data) => data.frontmatter?.tags ?? []))]
     const tagItemMap: Map<string, QuartzPluginData[]> = new Map()
     for (const tag of tags) {
       tagItemMap.set(tag, allPagesWithTag(tag))

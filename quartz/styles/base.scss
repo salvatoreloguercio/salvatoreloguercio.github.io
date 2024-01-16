@@ -64,17 +64,11 @@ a {
     color: var(--tertiary) !important;
   }
 
-  &.internal {
+  &.internal:not(:has(> img)) {
     text-decoration: none;
     background-color: var(--highlight);
     padding: 0 0.1rem;
     border-radius: 5px;
-
-    &:has(> img) {
-      background-color: none;
-      border-radius: 0;
-      padding: 0;
-    }
   }
 }
 
@@ -100,6 +94,8 @@ a {
   }
 
   & article {
+    position: relative;
+
     & > h1 {
       font-size: 2rem;
     }
@@ -304,13 +300,11 @@ h6 {
   margin-bottom: 1rem;
 }
 
-figure[data-rehype-pretty-code-figure] {
-  margin: 0;
-  position: relative;
+div[data-rehype-pretty-code-fragment] {
   line-height: 1.6rem;
   position: relative;
 
-  & > [data-rehype-pretty-code-title] {
+  & > div[data-rehype-pretty-code-title] {
     font-family: var(--codeFont);
     font-size: 0.9rem;
     padding: 0.1rem 0.5rem;
@@ -322,17 +316,16 @@ figure[data-rehype-pretty-code-figure] {
   }
 
   & > pre {
-    padding: 0;
+    padding: 0.5rem 0;
   }
 }
 
 pre {
   font-family: var(--codeFont);
-  padding: 0 0.5rem;
+  padding: 0.5rem;
   border-radius: 5px;
   overflow-x: auto;
   border: 1px solid var(--lightgray);
-  position: relative;
 
   &:has(> code.mermaid) {
     border: none;
@@ -345,7 +338,6 @@ pre {
     counter-reset: line;
     counter-increment: line 0;
     display: grid;
-    padding: 0.5rem 0;
 
     & [data-highlighted-chars] {
       background-color: var(--highlight);
